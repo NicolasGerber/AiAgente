@@ -7,7 +7,7 @@ def test():
     print(result)
     print("")
 
-    result = get_file_content("calculator", "main.py")
+    result = get_file_content("calculator", "../main.py")
     print("Result for current directory:")
     print(result)
     print("")

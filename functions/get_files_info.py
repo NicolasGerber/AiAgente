@@ -2,7 +2,6 @@
 
 import os
 
-
 def get_files_info(working_directory, directory="."):
     try:
         abs_working_dir = os.path.abspath(working_directory)
