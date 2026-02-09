@@ -21,9 +21,27 @@ class Calculator:
         return self._evaluate_infix(tokens)
 
     def _tokenize(self, expression):
-        # Add spaces around parentheses to facilitate splitting
-        expression = expression.replace("(", " ( ").replace(")", " ) ")
-        return expression.strip().split()
+        tokens = []
+        current_token = []
+        for char in expression:
+            if char.isspace():
+                if current_token:
+                    tokens.append("".join(current_token))
+                    current_token = []
+                continue
+
+            if char in self.operators or char == '(' or char == ')':
+                if current_token:
+                    tokens.append("".join(current_token))
+                    current_token = []
+                tokens.append(char)
+            else:
+                current_token.append(char)
+
+        if current_token:
+            tokens.append("".join(current_token))
+
+        return tokens
 
     def _evaluate_infix(self, tokens):
         values = []
